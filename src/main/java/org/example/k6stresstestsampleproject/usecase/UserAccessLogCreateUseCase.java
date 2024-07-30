@@ -14,6 +14,12 @@ public class UserAccessLogCreateUseCase {
 
     @Transactional
     public void create(Long userId) {
+        try {
+            Thread.sleep(40);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         userAccessLogRepository.save(UserAccessLog.of(userId));
     }
 }
